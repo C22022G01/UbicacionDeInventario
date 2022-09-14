@@ -15,6 +15,8 @@ namespace UbicacionDeInventario.AccesoADatos
         public DbSet<Rol> Rol { get; set; }
         public DbSet<Usuario> Usuario { get; set; }
         public DbSet<Bodega> Bodega { get; set; }
+
+        public DbSet<Estante> Estante { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-EMGKJOF;Initial Catalog=SeguridadWebdb;Integrated Security=True");
