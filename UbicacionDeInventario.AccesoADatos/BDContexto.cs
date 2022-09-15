@@ -19,7 +19,7 @@ namespace UbicacionDeInventario.AccesoADatos
         public DbSet<Estante> Estante { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-EMGKJOF;Initial Catalog=SeguridadWebdb;Integrated Security=True");
+            optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-EMGKJOF;Initial Catalog=UbicacionDeInventario;Integrated Security=True");
         }
     }
 }

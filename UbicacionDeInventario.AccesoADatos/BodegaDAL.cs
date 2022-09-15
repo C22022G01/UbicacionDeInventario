@@ -73,9 +73,21 @@ namespace UbicacionDeInventario.AccesoADatos
         {
             if (pBodega.Id > 0)
                 pQuery = pQuery.Where(s => s.Id == pBodega.Id);
+            if (pBodega.IdSucursal > 0)
+                pQuery = pQuery.Where(s => s.Id == pBodega.IdSucursal);
             if (!string.IsNullOrWhiteSpace(pBodega.Nombre))
                 pQuery = pQuery.Where(s => s.Nombre.Contains(pBodega.Nombre));
+            if (pBodega.FechaRegistro.Year > 1000)
+            {
+                DateTime fechaInicial = new DateTime(pBodega.FechaRegistro.Year, pBodega.FechaRegistro.Month, pBodega.FechaRegistro.Day, 0, 0, 0);
+                DateTime fechaFinal = fechaInicial.AddDays(1).AddMilliseconds(-1);
+                pQuery = pQuery.Where(s => s.FechaRegistro >= fechaInicial && s.FechaRegistro <= fechaFinal);
+            }
             pQuery = pQuery.OrderByDescending(s => s.Id).AsQueryable();
+            if (pBodega.Estatus > 0)
+                pQuery = pQuery.Where(s => s.Estatus == pBodega.Estatus);
+            if (!string.IsNullOrWhiteSpace(pBodega.Descripcion))
+                pQuery = pQuery.Where(s => s.Descripcion.Contains(pBodega.Descripcion));
             if (pBodega.Top_Aux > 0)
                 pQuery = pQuery.Take(pBodega.Top_Aux).AsQueryable();
             return pQuery;
@@ -87,6 +99,17 @@ namespace UbicacionDeInventario.AccesoADatos
             {
                 var select = bdContexto.Bodega.AsQueryable();
                 select = QuerySelect(select, pBodega);
+                bodegas = await select.ToListAsync();
+            }
+            return bodegas;
+        }
+        public static async Task<List<Bodega>> BuscarIncluirRolesAsync(Bodega pBodega)
+        {
+            var bodegas = new List<Bodega>();
+            using (var bdContexto = new BDContexto())
+            {
+                var select = bdContexto.Bodega.AsQueryable();
+                select = QuerySelect(select, pBodega).Include(s => s.Sucursal).AsQueryable();
                 bodegas = await select.ToListAsync();
             }
             return bodegas;
