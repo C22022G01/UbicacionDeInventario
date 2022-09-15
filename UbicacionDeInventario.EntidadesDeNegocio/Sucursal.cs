@@ -18,13 +18,13 @@ namespace UbicacionDeInventario.EntidadesDeNegocio
         [Required(ErrorMessage = "Nombre es obligatorio")]
         [StringLength(30, ErrorMessage = "Maximo 30 caracteres")]
         public string Telefono { get; set; }
-        [Required(ErrorMessage = "Telefono es obligatorio")]
-        [StringLength(10, ErrorMessage = "Maximo 10 caracteres")]
+        [Required(ErrorMessage = "El telefono es obligatorio")]
+        [StringLength(20, ErrorMessage = "Maximo 20 caracteres")]
         public string Direccion { get; set; }
-        [Required(ErrorMessage = "Direccion es obligatorio")]
-        [StringLength(30, ErrorMessage = "Maximo 30 caracteres")]
+        [Required(ErrorMessage = "La direccion es requerida")]
+        [StringLength(20, ErrorMessage = "Maximo 30 caracteres")]
         public string Comentario { get; set; }
-        [Required(ErrorMessage = "Direccion es obligatorio")]
+        [Required(ErrorMessage = "El comentario es requerido")]
         [StringLength(30, ErrorMessage = "Maximo 30 caracteres")]
 
         [NotMapped]
