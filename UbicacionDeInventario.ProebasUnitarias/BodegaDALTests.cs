@@ -20,9 +20,9 @@ namespace UbicacionDeInventario.AccesoADatos.Tests
         {
             var bodega = new Bodega();
             bodega.IdSucursal = bodegaInicial.IdSucursal;
-            bodega.Nombre = "Administrador";
-            bodegaInicial.Estatus = (byte)Estatus_Bodega.INACTIVO;
-            bodega.Descripcion = "Test Descripcion;
+            bodega.Nombre = "Admin";
+            bodega.Estatus = (byte)Estatus_Bodega.INACTIVO;
+            bodega.Descripcion = "Test Descripcion";
             int result = await BodegaDAL.CrearAsync(bodega);
             Assert.AreNotEqual(0, result);
             bodegaInicial.Id = bodega.Id;
@@ -35,8 +35,8 @@ namespace UbicacionDeInventario.AccesoADatos.Tests
             bodega.Id = bodegaInicial.Id;
             bodega.IdSucursal = bodegaInicial.IdSucursal;
             bodega.Nombre = "Admin";
-            bodegaInicial.Estatus = (byte)Estatus_Bodega.INACTIVO;
-            bodega.Descripcion = "Test Descripcion;
+            bodega.Estatus = (byte)Estatus_Bodega.INACTIVO;
+            bodega.Descripcion = "Test Descripcion";
             int result = await BodegaDAL.ModificarAsync(bodega);
             Assert.AreNotEqual(0, result);
 
@@ -45,35 +45,54 @@ namespace UbicacionDeInventario.AccesoADatos.Tests
         [TestMethod()]
         public async Task T3ObtenerPorIdAsyncTest()
         {
-            var rol = new Rol();
-            rol.Id = rolInicial.Id;
-            var resultRol = await RolDAL.ObtenerPorIdAsync(rol);
-            Assert.AreEqual(rol.Id, resultRol.Id);
+            var bodega = new Bodega();
+            bodega.Id = bodegaInicial.Id;
+            var resultBodega = await BodegaDAL.ObtenerPorIdAsync(bodega);
+            Assert.AreEqual(bodega.Id, resultBodega.Id);
         }
 
         [TestMethod()]
         public async Task T4ObtenerTodosAsyncTest()
         {
-            var resultRoles = await RolDAL.ObtenerTodosAsync();
-            Assert.AreNotEqual(0, resultRoles.Count);
+            var resultBodegas = await BodegaDAL.ObtenerTodosAsync();
+            Assert.AreNotEqual(0, resultBodegas.Count);
         }
 
         [TestMethod()]
         public async Task T5BuscarAsyncTest()
         {
-            var rol = new Rol();
-            rol.Nombre = "a";
-            rol.Top_Aux = 10;
-            var resultRoles = await RolDAL.BuscarAsync(rol);
-            Assert.AreNotEqual(0, resultRoles.Count);
+            var bodega = new Bodega();
+            bodega.IdSucursal = bodegaInicial.IdSucursal;
+            bodega.Nombre = "A";
+            bodega.Estatus = (byte)Estatus_Bodega.INACTIVO;
+            bodega.Descripcion = "D";
+            bodega.Top_Aux = 10;
+            var resultBodegas = await BodegaDAL.BuscarAsync(bodega);
+            Assert.AreNotEqual(0, resultBodegas.Count);
         }
         [TestMethod()]
-        public async Task T6EliminarAsyncTest()
+        public async Task T6BuscarIncluirSucursalesesAsync()
         {
-            var rol = new Rol();
-            rol.Id = rolInicial.Id;
-            int result = await RolDAL.EliminarAsync(rol);
+            var bodega = new Bodega();
+            bodega.IdSucursal = bodegaInicial.IdSucursal;
+            bodega.Nombre = "Admin";
+            bodega.Estatus = (byte)Estatus_Bodega.INACTIVO;
+            bodega.Descripcion = "Test Descripcion";
+            bodega.Top_Aux = 10;
+            var resultBodegas = await BodegaDAL.BuscarIncluirSucursalesesAsync(bodega);
+            Assert.AreNotEqual(0, resultBodegas.Count);
+            var ultimoBodega = resultBodegas.FirstOrDefault();
+            Assert.IsTrue(ultimoBodega.Sucursal!= null && bodega.IdSucursal == ultimoBodega.Sucursal.Id);
+
+
+
+            [TestMethod()]
+            public async Task T7EliminarAsyncTest()
+          {
+            var bodega = new Bodega();
+            bodega.Id = bodegaInicial.Id;
+            int result = await BodegaDAL.EliminarAsync(bodega);
             Assert.AreNotEqual(0, result);
-        }
+         }
     }
 }
