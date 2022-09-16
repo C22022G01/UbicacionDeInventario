@@ -10,7 +10,7 @@ using UbicacionDeInventario.EntidadesDeNegocio;
 
 namespace UbicacionDeInventario.AccesoADatos
 {
-    internal class SucursalDAL
+    public class SucursalDAL
     {
         public static async Task<int> CrearAsync(Sucursal pSucursal)
         {

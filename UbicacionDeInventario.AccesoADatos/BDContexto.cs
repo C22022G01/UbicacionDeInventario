@@ -16,6 +16,8 @@ namespace UbicacionDeInventario.AccesoADatos
         public DbSet<Usuario> Usuario { get; set; }
         public DbSet<Bodega> Bodega { get; set; }
 
+        public DbSet<Sucursal> Sucursal { get; set; }
+
         public DbSet<Estante> Estante { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
