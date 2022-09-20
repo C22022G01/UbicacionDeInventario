@@ -26,7 +26,7 @@ namespace UbicacionDeInventario.EntidadesDeNegocio
         public string Comentario { get; set; }
         [Required(ErrorMessage = "El comentario es requerido")]
         [StringLength(30, ErrorMessage = "Maximo 30 caracteres")]
-        public Bodega? Bodega { get; set; }
+        public List<Bodega>? Bodega { get; set; }
 
         [NotMapped]
         public int Top_Aux { get; set; }
