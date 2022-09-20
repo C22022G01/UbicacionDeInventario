@@ -67,6 +67,8 @@ namespace UbicacionDeInventario.AccesoADatos
         {
             if (pEstante.Id > 0)
                 pQuery = pQuery.Where(s => s.Id == pEstante.Id);
+            if (pEstante.IdBodega > 0)
+                pQuery = pQuery.Where(s => s.Id == pEstante.IdBodega);
             if (!string.IsNullOrWhiteSpace(pEstante.Nombre))
                 pQuery = pQuery.Where(s => s.Nombre.Contains(pEstante.Nombre));
             pQuery = pQuery.OrderByDescending(s => s.Id).AsQueryable();

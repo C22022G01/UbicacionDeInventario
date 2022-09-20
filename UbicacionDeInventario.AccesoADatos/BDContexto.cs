@@ -21,8 +21,8 @@ namespace UbicacionDeInventario.AccesoADatos
         public DbSet<Estante> Estante { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-EMGKJOF;Initial Catalog=Inventaro;Integrated Security=True");
-
+            // optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-EMGKJOF;Initial Catalog=Inventaro;Integrated Security=True");
+           //natalia optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-90E0RC6\SQLEXPRESS02;Initial Catalog=Inventario;Integrated Security=True");
             // cristian DESKTOP-EMGKJOF
             // natalia  
         }
