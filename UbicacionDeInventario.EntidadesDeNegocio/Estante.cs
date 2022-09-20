@@ -21,7 +21,7 @@ namespace UbicacionDeInventario.EntidadesDeNegocio
         [StringLength(30, ErrorMessage = "Maximo 30 caracteres")]
         public String Nombre { get; set; }
 
-        public Bodega Bodega { get; set; }
+        public Bodega? Bodega { get; set; }
 
         [NotMapped]
 

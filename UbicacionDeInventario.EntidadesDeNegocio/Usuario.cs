@@ -35,7 +35,7 @@ namespace UbicacionDeInventario.EntidadesDeNegocio
         public byte Estatus { get; set; }
         [Display(Name = "Fecha registro")]
         public DateTime FechaRegistro { get; set; }
-        public Rol Rol { get; set; }
+        public Rol? Rol { get; set; }
         [NotMapped]
         public int Top_Aux { get; set; }
         [NotMapped]

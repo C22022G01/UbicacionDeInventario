@@ -19,6 +19,6 @@ namespace UbicacionDeInventario.EntidadesDeNegocio
         public string Nombre { get; set; }
         [NotMapped]
         public int Top_Aux { get; set; }
-        public List<Usuario> Usuario { get; set; }
+        public List<Usuario>? Usuario { get; set; }
     }
 }

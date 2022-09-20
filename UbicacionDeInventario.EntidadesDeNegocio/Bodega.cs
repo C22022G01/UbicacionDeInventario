@@ -29,7 +29,9 @@ namespace UbicacionDeInventario.EntidadesDeNegocio
         [StringLength(150, ErrorMessage = "Maximo 150 caracteres")]
         public string Descripcion { get; set; }
 
-        public Sucursal Sucursal { get; set; }
+        public Sucursal?  Sucursal { get; set; }
+
+        public List<Estante>? Estante { get; set; }
 
         [NotMapped]
 
