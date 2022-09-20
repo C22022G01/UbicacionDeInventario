@@ -17,7 +17,7 @@ namespace UbicacionDeInventario.WedApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize] // agregar el siguiente metadato para autorizar JWT la Web API
+    //[Authorize] // agregar el siguiente metadato para autorizar JWT la Web API
     public class SucursalController : ControllerBase
     {
         private SucursalBL sucursalBL = new SucursalBL();
