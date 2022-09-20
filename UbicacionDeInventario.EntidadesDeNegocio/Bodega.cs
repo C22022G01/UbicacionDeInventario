@@ -22,7 +22,7 @@ namespace UbicacionDeInventario.EntidadesDeNegocio
         [StringLength(30, ErrorMessage = "Maximo 30 caracteres")]
         public String Nombre { get; set; }
         [Display(Name = "Fecha registro")]
-        public DateTime FechaRegistro { get; set; }
+        public DateTime FechaCreacion { get; set; }
         [Required(ErrorMessage = "Estatus es obligatorio")]
         public byte Estatus { get; set; }
         [Required(ErrorMessage = "El descripcion es requerida")]

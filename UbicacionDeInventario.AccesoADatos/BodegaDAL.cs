@@ -17,6 +17,7 @@ namespace UbicacionDeInventario.AccesoADatos
             int result = 0;
             using (var bdContexto = new BDContexto())
             {
+                pBodega.FechaCreacion = DateTime.Now;
                 bdContexto.Add(pBodega);
                 result = await bdContexto.SaveChangesAsync();
             }
@@ -30,7 +31,6 @@ namespace UbicacionDeInventario.AccesoADatos
                 var bodega = await bdContexto.Bodega.FirstOrDefaultAsync(s => s.Id == pBodega.Id);
                 bodega.IdSucursal = pBodega.IdSucursal;
                 bodega.Nombre = pBodega.Nombre;
-                bodega.FechaRegistro = pBodega.FechaRegistro;
                 bodega.Estatus = pBodega.Estatus;
                 bodega.Descripcion = pBodega.Descripcion;
                 bdContexto.Update(bodega);
@@ -77,11 +77,11 @@ namespace UbicacionDeInventario.AccesoADatos
                 pQuery = pQuery.Where(s => s.Id == pBodega.IdSucursal);
             if (!string.IsNullOrWhiteSpace(pBodega.Nombre))
                 pQuery = pQuery.Where(s => s.Nombre.Contains(pBodega.Nombre));
-            if (pBodega.FechaRegistro.Year > 1000)
+            if (pBodega.FechaCreacion.Year > 1000)
             {
-                DateTime fechaInicial = new DateTime(pBodega.FechaRegistro.Year, pBodega.FechaRegistro.Month, pBodega.FechaRegistro.Day, 0, 0, 0);
+                DateTime fechaInicial = new DateTime(pBodega.FechaCreacion.Year, pBodega.FechaCreacion.Month, pBodega.FechaCreacion.Day, 0, 0, 0);
                 DateTime fechaFinal = fechaInicial.AddDays(1).AddMilliseconds(-1);
-                pQuery = pQuery.Where(s => s.FechaRegistro >= fechaInicial && s.FechaRegistro <= fechaFinal);
+                pQuery = pQuery.Where(s => s.FechaCreacion >= fechaInicial && s.FechaCreacion <= fechaFinal);
             }
             pQuery = pQuery.OrderByDescending(s => s.Id).AsQueryable();
             if (pBodega.Estatus > 0)
