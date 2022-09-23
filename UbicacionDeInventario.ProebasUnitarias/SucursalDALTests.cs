@@ -20,7 +20,7 @@ namespace UbicacionDeInventario.AccesoADatos.Tests
             sucursal.Id = sucursalInicial.Id;
             sucursal.Nombre = "Administrador";
             sucursal.Telefono = "";
-            sucursal.Comentario = "Tst Comentario";
+            sucursal.Comentario = "Test Comentario";
             sucursal.Direccion = "Test Direccion";
             int result = await SucursalDAL.CrearAsync(sucursal);
             Assert.AreNotEqual(0, result);
