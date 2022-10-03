@@ -1,0 +1,50 @@
+﻿@page "/Estante"
+@using UbicacionDeInventario.EntidadesDeNegocio
+@using UbicacionDeInventario.UI.Blazor.MVC
+@inject HttpClient Http
+
+<PageTitle>Estante</PageTitle>
+
+<h1>Tabla Estante</h1>
+
+
+@if (bodegas == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>IdBodega</th>
+                <th>Nombre</th>
+                
+                
+               @* <th>Acciones</th>*@
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var estante in estantes)
+            {
+                <tr>
+                    <td>@estante.Nombre</td>                   
+                    <td>Modificar</td>
+                    <td>Eliminar</td>
+                    <td>ver</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+@code {
+     private Estante[]? estantes;
+
+    protected override async Task OnInitializedAsync()
+    {
+        //https://localhost:44396/api/Bodega
+        estantes = await Http.GetFromJsonAsync<Estante[]>("Estante");
+    }
+
+}
