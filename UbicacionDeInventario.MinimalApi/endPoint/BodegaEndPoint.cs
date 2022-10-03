@@ -8,7 +8,7 @@ namespace UbicacionDeInventario.MinimalApi.endPoint
     {
         public static void addBodegaEndPoits(this WebApplication app)
         {
-            // app.MapPost("/Bodega/create", rolBL.CrearAsync);
+            // app.MapPost("/Bodega/create", bodegaBL.CrearAsync);
             app.MapPost("/rol/create", async (BodegaCrear pBodega, BodegaBL bodega2BL) => {
                 return await bodega2BL.CrearAsync(new Bodega
                 {
@@ -16,10 +16,10 @@ namespace UbicacionDeInventario.MinimalApi.endPoint
                 });
             });
             BodegaBL bodegaBL = new BodegaBL();
-            app.MapPost("/rol/delete", bodegaBL.EliminarAsync);
-            app.MapPut("/rol", bodegaBL.ModificarAsync);
-            app.MapGet("/rol", bodegaBL.ObtenerTodosAsync);
-            app.MapPost("/rol/search", bodegaBL.BuscarAsync);
+            app.MapPost("/bodega/delete", bodegaBL.EliminarAsync);
+            app.MapPut("/bodega", bodegaBL.ModificarAsync);
+            app.MapGet("/bodega", bodegaBL.ObtenerTodosAsync);
+            app.MapPost("/bodega/search", bodegaBL.BuscarAsync);
         }
     }
 }
