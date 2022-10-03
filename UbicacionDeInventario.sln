@@ -13,9 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UbicacionDeInventario.Proeb
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UbicacionDeInventario.WedApi", "WebApi\UbicacionDeInventario.WedApi.csproj", "{2D7EE6A4-541F-4212-9571-AE21E23FE7F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UbicacionDeInventario.UI.Blazor", "UbicacionDeInventario.UI.Blazor\UbicacionDeInventario.UI.Blazor.csproj", "{B5D6486C-ED95-41FE-BE7D-AEDA3722C473}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UbicacionDeInventario.UI.Blazor", "UbicacionDeInventario.UI.Blazor\UbicacionDeInventario.UI.Blazor.csproj", "{B5D6486C-ED95-41FE-BE7D-AEDA3722C473}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UbicacionDeInventario.MinimalApi", "UbicacionDeInventario.MinimalApi\UbicacionDeInventario.MinimalApi.csproj", "{C05A4B50-E148-4089-8E31-72AAA3FF5ECE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UbicacionDeInventario.MinimalApi", "UbicacionDeInventario.MinimalApi\UbicacionDeInventario.MinimalApi.csproj", "{C05A4B50-E148-4089-8E31-72AAA3FF5ECE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
