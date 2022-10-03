@@ -6,5 +6,6 @@ namespace UbicacionDeInventario.UI.Blazor.endPoint
     public class SucursalEndPoint
     {
 
+
     }
 }

@@ -1,0 +1,46 @@
+﻿@page "/Sucursal/index"
+@inject HttpClient Http
+@using UbicacionDeInventario.EntidadesDeNegocio
+@using UbicacionDeInventario.UI.Blazor.MVC
+@if (sucursales == null)
+{
+
+
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Telefono</th>
+                <th>Comentario</th>
+                <th>Direccion</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var sucursal in sucursales)
+            {
+                <tr>
+                    <td>@sucursal.Id</td>
+                    <td>@sucursal.Nombre</td>
+                    <td>@sucursal.Telefono</td>
+                    <td>@sucursal.Comentario</td>
+                    <td>@sucursal.Direccion</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+@code {
+    private Sucursal[]? sucursales;
+
+    protected override async Task OnInitializedAsync()
+    {
+        // https://localhost:44370/api/Rol
+        sucursales = await Http.GetFromJsonAsync<Sucursal[]>("Sucursal");
+    }
+
+}
