@@ -1,4 +1,4 @@
-﻿@*@page "/Sucursal/index"
+﻿@page "/Sucursal"
 @inject HttpClient Http
 @using UbicacionDeInventario.EntidadesDeNegocio
 @using UbicacionDeInventario.UI.Blazor.MVC
@@ -43,4 +43,4 @@ else
         sucursales = await Http.GetFromJsonAsync<Sucursal[]>("Sucursal");
     }
 
-}*@
+}
