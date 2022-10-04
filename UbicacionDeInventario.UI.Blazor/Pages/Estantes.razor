@@ -8,7 +8,7 @@
 <h1>Tabla Estante</h1>
 
 
-@if (bodegas == null)
+@if (estantes == null)
 {
     <p><em>Loading...</em></p>
 }
@@ -43,7 +43,7 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        //https://localhost:44396/api/Bodega
+        //https://localhost:44396/api/Estante
         estantes = await Http.GetFromJsonAsync<Estante[]>("Estante");
     }
 
