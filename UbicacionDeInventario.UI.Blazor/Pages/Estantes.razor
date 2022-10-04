@@ -19,19 +19,16 @@ else
                 <th>Id</th>
                 <th>IdBodega</th>
                 <th>Nombre</th>
-                
-                
-               @* <th>Acciones</th>*@
             </tr>
         </thead>
         <tbody>
             @foreach (var estante in estantes)
             {
                 <tr>
-                    <td>@estante.Nombre</td>                   
-                    <td>Modificar</td>
-                    <td>Eliminar</td>
-                    <td>ver</td>
+                    <td>@estante.Id</td>                   
+                    <td>@estante.IdBodega</td>
+                    <td>@estante.Nombre</td>
+                   
                 </tr>
             }
         </tbody>

@@ -1,17 +1,18 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-// Agregar la siguiente librerias
+// Agregar la siguiente libreria para la seguridad JWT
+using UbicacionDeInventario.WebAPI.Auth;
+using Microsoft.AspNetCore.Authorization;
 using UbicacionDeInventario.EntidadesDeNegocio;
 using UbicacionDeInventario.LogicaDeNegocio;
 using System.Text.Json;
-using Microsoft.AspNetCore.Authorization;
 
 namespace UbicacionDeInventario.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize] // agregar el siguiente metadato para autorizar JWT la Web API
+   // [Authorize] // agregar el siguiente metadato para autorizar JWT la Web API
     public class EstanteController : ControllerBase
     {
         private EstanteBL estanteBL = new EstanteBL();
