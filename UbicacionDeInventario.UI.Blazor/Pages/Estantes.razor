@@ -1,0 +1,46 @@
+﻿@page "/Estantes"
+@using UbicacionDeInventario.EntidadesDeNegocio
+@inject HttpClient Http
+
+<PageTitle>Estante</PageTitle>
+
+<h1>Tabla Estante</h1>
+
+
+@if (estantes == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>IdBodega</th>
+                <th>Nombre</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var estante in estantes)
+            {
+                <tr>
+                    <td>@estante.Id</td>                   
+                    <td>@estante.IdBodega</td>
+                    <td>@estante.Nombre</td>
+                   
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+@code {
+     private Estante[]? estantes;
+
+    protected override async Task OnInitializedAsync()
+    {
+        //https://localhost:44396/api/Estante
+        estantes = await Http.GetFromJsonAsync<Estante[]>("Estante");
+    }
+
+}

@@ -1,6 +1,5 @@
-﻿@page "/Bodega"
+﻿@page "/Bodegas"
 @using UbicacionDeInventario.EntidadesDeNegocio
-@using UbicacionDeInventario.UI.Blazor.MVC
 @inject HttpClient Http
 
 <PageTitle>Bodegas</PageTitle>
@@ -29,10 +28,12 @@ else
             @foreach (var bodega in bodegas)
             {
                 <tr>
-                    <td>@bodega.Nombre</td>                   
-                    <td>Modificar</td>
-                    <td>Eliminar</td>
-                    <td>ver</td>
+                    <td>@bodega.Id</td>
+                    <td>@bodega.Nombre</td>      
+                    <td>@bodega.Estatus</td>
+                    <td>@bodega.Descripcion</td>
+                    <td>@bodega.IdSucursal</td>
+
                 </tr>
             }
         </tbody>
