@@ -38,7 +38,7 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        // https://localhost:44370/api/Rol
+        // https://localhost:7293/api/Sucursal
         sucursales = await Http.GetFromJsonAsync<Sucursal[]>("Sucursal");
     }
 
