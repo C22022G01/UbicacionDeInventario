@@ -1,0 +1,46 @@
+﻿@page "/Usuarios"
+@using UbicacionDeInventario.EntidadesDeNegocio
+@inject HttpClient Http
+
+<PageTitle>Usuarios</PageTitle>
+
+<h1>Tabla Usuario</h1>
+
+@if (usuarios == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Estatus</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var usuario in usuarios)
+            {
+                <tr>
+                    <td>@usuario.Id</td>
+                    <td>@usuario.Nombre</td> 
+                    <td>@usuario.Apellido</td>
+                    <td>@usuario.Estatus</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+@code {
+     private Usuario[]? usuarios;
+
+    protected override async Task OnInitializedAsync()
+    {
+        //https://localhost:44396/api/Bodega
+        usuarios = await Http.GetFromJsonAsync<Usuario[]>("Usuario");
+    }
+
+}
+ 

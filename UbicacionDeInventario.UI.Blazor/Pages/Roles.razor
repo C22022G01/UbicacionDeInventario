@@ -1,0 +1,42 @@
+﻿@page "/Roles"
+@using UbicacionDeInventario.EntidadesDeNegocio
+@inject HttpClient Http
+
+<PageTitle>Roles</PageTitle>
+
+<h1>Tabla Roles</h1>
+
+
+@if (roles == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var rol in roles)
+            {
+                <tr>
+                    <td>@rol.Nombre</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+@code {
+     private Rol[]? roles;
+
+    protected override async Task OnInitializedAsync()
+    {
+        //https://localhost:44396/api/Bodega
+        roles = await Http.GetFromJsonAsync<Rol[]>("Rol");
+    }
+
+}
+ 
