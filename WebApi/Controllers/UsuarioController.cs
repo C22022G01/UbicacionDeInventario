@@ -11,7 +11,7 @@ using System.Text.Json;
 namespace UbicacionDeInventario.WedApi.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
+    //[ApiController]
     [Authorize] // agregar el siguiente metadato para autorizar JWT la Web API
     public class UsuarioController : ControllerBase
     {

@@ -17,6 +17,7 @@ else
             <tr>
                 <th>Id</th>
                 <th>Nombre</th>
+                <th>Apellido</th>
                 <th>Estatus</th>
             </tr>
         </thead>
@@ -38,7 +39,7 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        //https://localhost:44396/api/Bodega
+        //https://localhost:44396/api/Usuario
         usuarios = await Http.GetFromJsonAsync<Usuario[]>("Usuario");
     }
 
